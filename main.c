@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * main - entry point
  * Return: 0 if success
@@ -9,7 +8,6 @@ int main(void)
 	char *buffer = NULL;
 	size_t bufsize = 0;
 	ssize_t ip;
-	int id, status;
 	char *b = "$ ", **args;
 
 	while (1)
@@ -31,7 +29,7 @@ int main(void)
 			break;
 		if (!strcmp(args[0], "env"))
 			_env(environ);
-		status = execute_command(args);
+		execute_command(args);
 		free(args);
 	}
 	free(buffer);
