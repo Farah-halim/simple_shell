@@ -11,7 +11,7 @@
 ssize_t read_buffer(char *buffer, size_t *buffer_index,
 		ssize_t *chars_read, FILE *stream)
 {
-	if (*buffer_index >= *chars_read)
+	if (*buffer_index >= (size_t)*chars_read)
 	{
 		*chars_read = read(fileno(stream), buffer, 1024);
 		if (*chars_read <= 0)
@@ -47,7 +47,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	if (chars_read_result == -1)
 		return (-1);
 	newline_index = buffer_index;
-	while (newline_index < chars_read &&
+	while (newline_index < (size_t)chars_read &&
 			buffer[newline_index] != '\n')
 		newline_index++;
 	line_length = newline_index - buffer_index;
@@ -59,10 +59,10 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 			return (-1);
 		*lineptr = resized_line;
 	}
-	for (i = 0; i < line_length; i++)
+	for (i = 0; i < (size_t)line_length; i++)
 		(*lineptr)[i] = buffer[buffer_index++];
 	(*lineptr)[line_length] = '\0';
-	if (newline_index < chars_read)
+	if (newline_index < (size_t)chars_read)
 		buffer_index++;
 	total_chars_read = line_length + 1;
 	return (total_chars_read);
