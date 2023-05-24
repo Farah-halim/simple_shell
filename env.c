@@ -6,11 +6,12 @@
  */
 void _env(char **environ)
 {
-	int i = 0;
-
-	while (environ[i])
+	int x = 0;
+	char **env = environ;
+	while (env[x])
 	{
-		printf("%s\n", environ[i]);
-		i++;
+		write(STDOUT_FILENO, (const void *)env[x], strlen(env[x]));
+		write(STDOUT_FILENO, "\n", 1);
+		x++;
 	}
 }
