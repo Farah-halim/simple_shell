@@ -31,8 +31,6 @@ int main(void)
 			_env(environ);
 		execute_command(args);
 		free(args);
-		system("non-existent-command");
-		exit(0);
 	}
 	free(buffer);
 	return (0);
