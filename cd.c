@@ -42,4 +42,5 @@ void _cd(char *path)
 		perror("getcwd failed");
 		return;
 	}
+	setenv("PWD", cwd, 1);
 }
