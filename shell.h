@@ -17,5 +17,6 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 char *get_command_path(const char *command);
 ssize_t read_buffer(char *buffer, size_t *buffer_index,
 		ssize_t *chars_read, FILE *stream);
+void _cd(char *path);
 
 #endif

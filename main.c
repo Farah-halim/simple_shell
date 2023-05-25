@@ -27,9 +27,12 @@ int main(void)
 		args = take_input(buffer, bufsize);
 		if (!strcmp(args[0], "exit"))
 			break;
-		if (!strcmp(args[0], "env"))
+		else if (!strcmp(args[0], "env"))
 			_env(environ);
-		execute_command(args);
+		else if (!strcmp(args[0], "cd"))
+			_cd(args[1]);
+		else
+			execute_command(args);
 		free(args);
 	}
 	free(buffer);
